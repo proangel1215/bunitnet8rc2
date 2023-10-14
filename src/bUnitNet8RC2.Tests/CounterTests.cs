@@ -20,6 +20,18 @@ namespace bUnitNet8RC2.Tests
         [TestMethod]
         public void Counter2ShouldIncrementWhenClicked()
         {
+            var com = RenderComponent<Counter2>();
+
+            com.Find("button").Click();
+
+            com.Find("p").MarkupMatches("<p>Current count: 1</p>");
+        }
+
+
+        // only this one fails:
+        [TestMethod]
+        public void Counter2ShouldIncrementWhenClicked2()
+        {
             var com = RenderComponent<Counter2>(parameters => parameters.Add(p => p.Step, 2));
 
             com.Find("button").Click();
